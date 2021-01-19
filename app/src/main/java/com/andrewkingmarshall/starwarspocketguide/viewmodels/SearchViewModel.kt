@@ -1,19 +1,16 @@
 package com.andrewkingmarshall.starwarspocketguide.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.andrewkingmarshall.starwarspocketguide.objects.Person
 import com.andrewkingmarshall.starwarspocketguide.repository.PeopleRepository
-import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.disposables.CompositeDisposable
 import timber.log.Timber
 import javax.inject.Inject
 
 class SearchViewModel
 @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val peopleRepository: PeopleRepository
 ) : ViewModel() {
 
