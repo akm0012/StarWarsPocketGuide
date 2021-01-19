@@ -1,7 +1,6 @@
 package com.andrewkingmarshall.starwarspocketguide.objects
 
 import com.andrewkingmarshall.starwarspocketguide.network.dtos.PersonDto
-import com.google.gson.annotations.SerializedName
 
 data class Person(
 
@@ -25,13 +24,20 @@ data class Person(
 
     val isFavorited: Boolean,
 ) {
-//    constructor(
-//        personDto: PersonDto,
-//        isFavorited: Boolean
-//    ) : this(
-//
-//
-//
-//    )
+    constructor(
+        personDto: PersonDto,
+        isFavorited: Boolean
+    ) : this(
+        personDto.getId(),
+        personDto.name,
+        personDto.height,
+        personDto.mass,
+        personDto.hairColor,
+        personDto.skinColor,
+        personDto.eyeColor,
+        personDto.birthYear,
+        personDto.gender,
+        isFavorited,
+    )
 
 }

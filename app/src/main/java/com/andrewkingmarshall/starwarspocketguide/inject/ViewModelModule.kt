@@ -1,6 +1,7 @@
 package com.andrewkingmarshall.starwarspocketguide.inject
 
 import android.content.Context
+import com.andrewkingmarshall.starwarspocketguide.repository.PeopleRepository
 import com.andrewkingmarshall.starwarspocketguide.viewmodels.SearchViewModel
 import dagger.Module
 import dagger.Provides
@@ -12,13 +13,15 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 @InstallIn(ApplicationComponent::class)
 class ViewModelModule {
 
-    @Provides
-    fun provideSearchViewModel(
-        @ApplicationContext context: Context
-    ): SearchViewModel {
-        return SearchViewModel(
-            context
-        )
-    }
+//    @Provides
+//    fun provideSearchViewModel(
+//        @ApplicationContext context: Context,
+//        peopleRepository: PeopleRepository,
+//    ): SearchViewModel {
+//        return SearchViewModel(
+//            context,
+//            peopleRepository,
+//        )
+//    }
 
 }

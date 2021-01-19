@@ -25,7 +25,7 @@ data class PersonDto(
     val gender: String = "",
 
     /**
-     *  Could be used to find the Id, in the example case, 22.
+     *  Used to create an Id, in the example case, 22.
      *  Ex: "url": "http://swapi.dev/api/people/22/"
      */
     val url: String = "",

@@ -4,10 +4,11 @@ import com.andrewkingmarshall.starwarspocketguide.network.response.PeopleSearchR
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiServiceInterface {
 
-    @GET("people/?search/{SEARCH_QUERY}")
-    fun searchPeople(@Path("SEARCH_QUERY") searchQuery: String): Observable<PeopleSearchResponse>
+    @GET("people")
+    fun searchPeople(@Query("search") searchQuery: String): Observable<PeopleSearchResponse>
 
 }
