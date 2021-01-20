@@ -49,4 +49,18 @@ class PersonAdapter(
         this.people = people
         notifyDataSetChanged()
     }
+
+    fun setPersonIsFavorited(id: String?, isFavorited: Boolean) {
+        if (id.isNullOrBlank()) {
+            return
+        }
+
+        people.forEachIndexed {index, person ->
+            if (person.id == id) {
+                person.isFavorited = isFavorited
+            }
+
+            notifyItemChanged(index)
+        }
+    }
 }

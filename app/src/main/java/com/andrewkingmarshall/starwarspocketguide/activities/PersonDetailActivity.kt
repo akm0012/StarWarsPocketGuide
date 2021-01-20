@@ -17,8 +17,12 @@ class PersonDetailActivity : AppCompatActivity() {
     @Inject
     lateinit var detailViewModel: PersonDetailViewModel
 
+    lateinit var person: Person
+
     companion object {
         const val PERSON_EXTRA = "PERSON_EXTRA"
+        const val PERSON_ID_EXTRA = "PERSON_ID_EXTRA"
+        const val IS_PERSON_FAVORITED = "IS_PERSON_FAVORITED"
         fun getIntent(context: Context, person: Person): Intent {
             return Intent(context, PersonDetailActivity::class.java).apply {
                 putExtra(PERSON_EXTRA, person)
@@ -31,7 +35,7 @@ class PersonDetailActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_person_detail)
 
-        val person = intent.extras?.get(PERSON_EXTRA) as Person
+        person = intent.extras?.get(PERSON_EXTRA) as Person
 
         nameField.setField(person.name)
         heightField.setField(person.height)
@@ -46,6 +50,14 @@ class PersonDetailActivity : AppCompatActivity() {
 
         favoriteCheckBox.setOnCheckedChangeListener { _, isChecked ->
             detailViewModel.onPersonFavorited(person, isChecked)
+
+            // Set Result OK if this has been checked or unchecked at least once
+            val extrasBundle = Intent().apply {
+               putExtra(IS_PERSON_FAVORITED, favoriteCheckBox.isChecked)
+               putExtra(PERSON_ID_EXTRA, person.id)
+            }
+            setResult(RESULT_OK, extrasBundle)
         }
     }
+
 }

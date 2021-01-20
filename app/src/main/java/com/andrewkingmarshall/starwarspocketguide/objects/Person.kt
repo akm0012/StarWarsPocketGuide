@@ -23,7 +23,8 @@ data class Person(
 
     val gender: String,
 
-    val isFavorited: Boolean,
+    var isFavorited: Boolean,
+
 ): Serializable {
     constructor(
         personDto: PersonDto,

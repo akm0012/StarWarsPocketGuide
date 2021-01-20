@@ -1,6 +1,7 @@
 package com.andrewkingmarshall.starwarspocketguide.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,10 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchActivity : AppCompatActivity() {
+
+    companion object {
+        const val UPDATE_PERSON_REQUEST_CODE = 7591
+    }
 
     @Inject
     lateinit var searchViewModel: SearchViewModel
@@ -43,7 +48,10 @@ class SearchActivity : AppCompatActivity() {
 
         // Listen for when we should go to the Detail Activity
         searchViewModel.goToPersonDetailEvent.observe(this, { person ->
-            startActivity(PersonDetailActivity.getIntent(this@SearchActivity, person))
+            startActivityForResult(
+                PersonDetailActivity.getIntent(this@SearchActivity, person),
+                UPDATE_PERSON_REQUEST_CODE
+            )
         })
     }
 
@@ -69,5 +77,19 @@ class SearchActivity : AppCompatActivity() {
                 Timber.d("Searching for $it")
                 searchViewModel.onSearchQueryUpdated(it.toString())
             }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Update the person in the adapter
+        if (requestCode == UPDATE_PERSON_REQUEST_CODE && resultCode == RESULT_OK) {
+            data?.let {
+                personAdaptor.setPersonIsFavorited(
+                    it.getStringExtra(PersonDetailActivity.PERSON_ID_EXTRA),
+                    it.getBooleanExtra(PersonDetailActivity.IS_PERSON_FAVORITED, false)
+                )
+            }
+        }
     }
 }
