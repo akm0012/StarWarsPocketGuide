@@ -4,12 +4,18 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.andrewkingmarshall.beachbuddy.extensions.toast
 import com.andrewkingmarshall.starwarspocketguide.R
 import com.andrewkingmarshall.starwarspocketguide.objects.Person
+import com.andrewkingmarshall.starwarspocketguide.viewmodels.PersonDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_person_detail.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PersonDetailActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var detailViewModel: PersonDetailViewModel
 
     companion object {
         const val PERSON_EXTRA = "PERSON_EXTRA"
@@ -37,5 +43,9 @@ class PersonDetailActivity : AppCompatActivity() {
         genderField.setField(person.gender)
 
         favoriteCheckBox.isChecked = person.isFavorited
+
+        favoriteCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            detailViewModel.onPersonFavorited(person, isChecked)
+        }
     }
 }

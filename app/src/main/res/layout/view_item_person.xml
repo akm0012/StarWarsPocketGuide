@@ -25,6 +25,8 @@
         android:layout_height="wrap_content"
         android:text="@string/favorite_bang"
         android:textColor="@color/sw_yellow"
+        android:padding="2dp"
+        android:background="#696969"
         android:textSize="15sp"
         android:textStyle="bold"
         android:visibility="gone"
