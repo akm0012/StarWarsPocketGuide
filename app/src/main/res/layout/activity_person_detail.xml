@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PersonDetailActivity">
+
+    <com.andrewkingmarshall.starwarspocketguide.views.LabeledFieldTextView
+        android:id="@+id/nameField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        app:layout_constraintBottom_toTopOf="@id/heightField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lftv_fieldLabel="@string/name" />
+
+    <com.andrewkingmarshall.starwarspocketguide.views.LabeledFieldTextView
+        android:id="@+id/heightField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        app:layout_constraintBottom_toTopOf="@id/massField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameField"
+        app:lftv_fieldLabel="@string/height" />
+
+    <com.andrewkingmarshall.starwarspocketguide.views.LabeledFieldTextView
+        android:id="@+id/massField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        app:layout_constraintBottom_toTopOf="@id/hairColorField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heightField"
+        app:lftv_fieldLabel="@string/mass" />
+
+    <com.andrewkingmarshall.starwarspocketguide.views.LabeledFieldTextView
+        android:id="@+id/hairColorField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        app:layout_constraintBottom_toTopOf="@id/skinColorField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/massField"
+        app:lftv_fieldLabel="@string/hair_color" />
+
+    <com.andrewkingmarshall.starwarspocketguide.views.LabeledFieldTextView
+        android:id="@+id/skinColorField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        app:layout_constraintBottom_toTopOf="@id/eyeColorField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hairColorField"
+        app:lftv_fieldLabel="@string/skin_color" />
+
+    <com.andrewkingmarshall.starwarspocketguide.views.LabeledFieldTextView
+        android:id="@+id/eyeColorField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        app:layout_constraintBottom_toTopOf="@id/birthYearField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skinColorField"
+        app:lftv_fieldLabel="@string/skin_color" />
+
+    <com.andrewkingmarshall.starwarspocketguide.views.LabeledFieldTextView
+        android:id="@+id/birthYearField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        app:layout_constraintBottom_toTopOf="@id/genderField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eyeColorField"
+        app:lftv_fieldLabel="@string/skin_color" />
+
+    <com.andrewkingmarshall.starwarspocketguide.views.LabeledFieldTextView
+        android:id="@+id/genderField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/birthYearField"
+        app:lftv_fieldLabel="@string/gender" />
+
+    <CheckBox
+        android:id="@+id/favoriteCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/person_detail_field_top_margin"
+        android:text="@string/favorite"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genderField" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

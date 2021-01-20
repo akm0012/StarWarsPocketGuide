@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">Star Wars Pocket Guide</string>
     <string name="search_hint">Search for a character…</string>
-    <string name="favorite">Favorite!</string>
+    <string name="favorite_bang">Favorite!</string>
+
+    <string name="favorite">Favorite</string>
+
+    <string name="name">Name</string>
+    <string name="height">Height</string>
+    <string name="mass">Mass</string>
+    <string name="hair_color">Hair Color</string>
+    <string name="skin_color">Skin Color</string>
+    <string name="eye_color">Eye Color</string>
+    <string name="birth_year">Birth Year</string>
+    <string name="gender">Gender</string>
+
 </resources>

@@ -28,6 +28,7 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_search)
 
         setUpSearchView()
@@ -39,12 +40,17 @@ class SearchActivity : AppCompatActivity() {
             Timber.d("People changed: $people")
             personAdaptor.setPeople(people)
         })
+
+        // Listen for when we should go to the Detail Activity
+        searchViewModel.goToPersonDetailEvent.observe(this, { person ->
+            startActivity(PersonDetailActivity.getIntent(this@SearchActivity, person))
+        })
     }
 
     private fun setUpRecyclerView() {
         personAdaptor = PersonAdapter(ArrayList(), object : PersonAdapter.PersonClickedListener {
             override fun onPersonClicked(person: Person) {
-                person.name.toast(this@SearchActivity)
+                searchViewModel.onPersonSelected(person)
             }
         })
         recyclerView.apply {

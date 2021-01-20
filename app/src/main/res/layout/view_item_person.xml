@@ -23,7 +23,7 @@
         android:id="@+id/favoritedIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/favorite"
+        android:text="@string/favorite_bang"
         android:textColor="@color/sw_yellow"
         android:textSize="15sp"
         android:textStyle="bold"

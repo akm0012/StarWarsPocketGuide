@@ -1,6 +1,7 @@
 package com.andrewkingmarshall.starwarspocketguide.objects
 
 import com.andrewkingmarshall.starwarspocketguide.network.dtos.PersonDto
+import java.io.Serializable
 
 data class Person(
 
@@ -23,7 +24,7 @@ data class Person(
     val gender: String,
 
     val isFavorited: Boolean,
-) {
+): Serializable {
     constructor(
         personDto: PersonDto,
         isFavorited: Boolean

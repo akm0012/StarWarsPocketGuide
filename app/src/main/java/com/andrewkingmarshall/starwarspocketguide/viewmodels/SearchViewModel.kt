@@ -14,8 +14,9 @@ class SearchViewModel
     private val peopleRepository: PeopleRepository
 ) : ViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
+    val goToPersonDetailEvent = SingleLiveEvent<Person>()
 
+    private val compositeDisposable = CompositeDisposable()
     private var peopleLiveData = MutableLiveData<List<Person>>()
 
     fun getSearchResultLiveData(): LiveData<List<Person>> {
@@ -26,10 +27,14 @@ class SearchViewModel
         compositeDisposable.add(peopleRepository.getPeopleForSearchQuery(searchQuery)
             .map { peopleLiveData.postValue(it) }
             .subscribe(
-                { Timber.d("People update complete") },
+                { Timber.d("People search complete") },
                 { error -> Timber.e(error) }
             )
         )
+    }
+
+    fun onPersonSelected(person: Person) {
+        goToPersonDetailEvent.value = person
     }
 
     override fun onCleared() {
